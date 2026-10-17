@@ -1,81 +1,109 @@
-# 👻 Kiro-app · Flappy Kiro
+# 👻 Flappy Kiro
 
-Repositorio de arranque para **Flappy Kiro**, un juego tipo *Flappy Bird* con un fantasma como protagonista. Lo empecé en una convención de **AWS** donde nos presentaron **Kiro**, el editor de código con IA de Amazon.
+Juego tipo *Flappy Bird* con un fantasma como protagonista, creado con **Kiro**, el editor de código con IA de AWS, a partir del kit de arranque que nos dieron en una convención de **AWS**.
 
-> 🚧 **Estado:** carpeta inicial con los recursos del juego. El código del juego todavía **no está hecho**: es el punto de partida para construirlo.
+> ✅ **Estado:** juego completo y jugable.
 
-## 🎮 Cómo será el juego
+## 🎮 El juego
 
 ![Flappy Kiro UI](img/example-ui.png)
 
+El objetivo es sencillo: **mantener a Ghosty en el aire y pasar por los huecos de las tuberías sin chocar**. Cada tubería superada suma un punto.
+
 | Elemento | Qué hace |
 | :--- | :--- |
-| 👻 **Ghosty** | El personaje. Cae solo y **sube un poco cada vez que se pulsa** una tecla o el ratón |
-| 🟩 **Tuberías** | Vienen de derecha a izquierda con un hueco entre arriba y abajo. Hay que pasar por el hueco |
-| 💥 **Colisión** | Tocar una tubería o el suelo termina la partida (suena `game_over.wav`) |
-| 🔢 **Marcador** | `Score` (puntos de esta partida) y `High` (mejor puntuación). Se suma 1 por cada tubería superada |
+| 👻 **Ghosty** | El personaje. Cae por la gravedad y **sube cada vez que saltas** |
+| 🟩 **Tuberías** | Se mueven de derecha a izquierda, con un hueco a una altura distinta cada vez |
+| 💥 **Colisión** | Tocar una tubería o el suelo termina la partida y suena `game_over.wav` |
+| 🔢 **Score** | Puntos de la partida actual (+1 por cada tubería superada) |
+| 🏆 **High** | Mejor puntuación conseguida |
+| 🔊 **Sonidos** | `jump.wav` en cada salto y `game_over.wav` al perder |
 
-## 📂 Estructura del repositorio
+## 🕹️ Controles
 
-```
-Kiro-app/
-├── assets/                          ← recursos del juego (sprites y sonidos)
-│   ├── ghosty.png                   ← imagen del fantasma (el personaje)
-│   ├── jump.wav                     ← sonido al saltar
-│   └── game_over.wav                ← sonido al perder
-├── img/
-│   └── example-ui.png               ← captura de cómo se verá el juego
-├── kiro-introduction-starter-kit.zip ← kit original de AWS (copia de todo lo anterior)
-├── .gitignore                       ← archivos que Git no debe subir
-├── LICENCE.md                       ← licencia MIT-0 de Amazon
-└── README.md                        ← este archivo
-```
+| Acción | Tecla |
+| :--- | :--- |
+| Saltar | `Espacio` o clic del ratón |
+| Reiniciar tras perder | `Espacio` o clic |
 
-## 🧩 Qué es cada archivo
-
-| Archivo | Tipo | Tamaño | Para qué sirve |
-| :--- | :--- | :--- | :--- |
-| `assets/ghosty.png` | Imagen PNG | ~33 KB | Sprite del fantasma blanco con ojos negros. Se dibuja sobre el fondo del juego |
-| `assets/jump.wav` | Audio WAV | ~64 KB | Efecto de sonido corto. Se reproduce cada vez que Ghosty salta |
-| `assets/game_over.wav` | Audio WAV | ~387 KB | Efecto de sonido al terminar la partida |
-| `img/example-ui.png` | Imagen PNG | ~684 KB | Captura de ejemplo: fondo azul con nubes, tuberías verdes y barra de puntuación |
-| `kiro-introduction-starter-kit.zip` | ZIP | ~987 KB | Kit original entregado en la convención. Contiene los mismos archivos de arriba |
-| `.gitignore` | Configuración | — | Lista de cosas que no se suben a GitHub (archivos del sistema, `node_modules/`, logs, entornos de Python...) |
-| `LICENCE.md` | Texto | — | Licencia **MIT-0** de Amazon: se puede usar, copiar y modificar **sin ninguna obligación** de dar crédito |
-
-## 🛠️ Tecnologías
-
-- **Kiro** (editor de AWS con IA): para crear el juego a partir de una descripción.
-- **Formatos de recursos:** PNG para imágenes y WAV para sonidos.
-- El lenguaje del juego se decidirá al construirlo. Una opción sencilla es **HTML + CSS + JavaScript** con un `<canvas>`, que encaja con lo que ya estoy estudiando.
-
-## ▶️ Cómo usarlo
+## ▶️ Cómo jugar
 
 1. Clonar el repositorio:
    ```bash
    git clone https://github.com/EduardoFafianMontero/Kiro-app.git
    cd Kiro-app
    ```
-2. Abrir la carpeta en **Kiro** (o en VS Code).
-3. Describir el juego a Kiro usando los archivos de `assets/` y la captura de `img/` como referencia.
+2. Abrir `index.html` en el navegador (doble clic sobre el archivo).
+3. Pulsar `Espacio` para empezar.
 
-Por ahora no hay nada que ejecutar: el repo solo contiene los recursos.
+No hay que instalar nada.
 
-## 🗺️ Próximos pasos
+## 📂 Estructura del repositorio
 
-- [ ] Crear `index.html` con el lienzo del juego
-- [ ] Mover a Ghosty con gravedad y salto
-- [ ] Generar las tuberías con huecos aleatorios
-- [ ] Detectar colisiones
-- [ ] Marcador `Score` y `High`
-- [ ] Reproducir `jump.wav` y `game_over.wav`
-- [ ] Guardar la mejor puntuación en el navegador
+```
+Kiro-app/
+├── assets/                           ← recursos del juego
+│   ├── ghosty.png                    ← sprite del fantasma
+│   ├── jump.wav                      ← sonido de salto
+│   └── game_over.wav                 ← sonido de fin de partida
+├── img/
+│   └── example-ui.png                ← captura del juego
+├── index.html                        ← página y lienzo del juego
+├── (código del juego)                ← lógica: gravedad, tuberías, colisiones, puntuación
+├── kiro-introduction-starter-kit.zip ← kit original de AWS
+├── .gitignore                        ← archivos que Git no sube
+├── LICENCE.md                        ← licencia MIT-0
+└── README.md                         ← este archivo
+```
 
-## 📝 Notas
+## ⚙️ Cómo funciona por dentro
 
-- `kiro-introduction-starter-kit.zip` repite lo que ya está en las carpetas. Se puede borrar del repo para ahorrar espacio, o dejarlo como copia del original.
-- Los recursos (`assets/` y `img/`) y la licencia son del kit de **Amazon**. El código que añada yo será mío.
+El juego sigue un **bucle** que se repite unas 60 veces por segundo:
+
+1. **Actualizar:** la gravedad tira de Ghosty hacia abajo y las tuberías avanzan hacia la izquierda.
+2. **Comprobar colisiones:** se mira si Ghosty toca una tubería, el suelo o el techo.
+3. **Puntuar:** si una tubería queda detrás de Ghosty, suma 1 punto.
+4. **Dibujar:** se pinta el fondo, las tuberías, a Ghosty y el marcador.
+
+Conceptos que usa:
+
+| Concepto | Para qué sirve |
+| :--- | :--- |
+| **Gravedad y velocidad** | Ghosty cae cada vez más rápido y el salto le da un impulso hacia arriba |
+| **Colisión por rectángulos** | Ghosty y las tuberías se tratan como cajas; si se solapan, hay choque |
+| **Aleatoriedad** | La altura de cada hueco se elige al azar |
+| **Estados del juego** | Esperando, jugando y fin de partida |
+
+## 🧩 Recursos
+
+| Archivo | Tipo | Función |
+| :--- | :--- | :--- |
+| `assets/ghosty.png` | PNG | Sprite del personaje |
+| `assets/jump.wav` | WAV | Efecto al saltar |
+| `assets/game_over.wav` | WAV | Efecto al perder |
+| `img/example-ui.png` | PNG | Captura del juego |
+
+## 🛠️ Tecnologías
+
+- **Kiro**: editor con IA de AWS usado para crear el juego.
+- **HTML, CSS y JavaScript**: la página y la lógica, con `<canvas>`.
+- **Git y GitHub**: control de versiones.
+
+## 💡 Qué aprendí
+
+- Cómo describir un proyecto a una IA y revisar lo que genera.
+- Cómo funciona un bucle de juego.
+- Cómo se detectan colisiones.
+- Cómo organizar un repositorio con recursos, código y documentación.
+
+## 🗺️ Mejoras posibles
+
+- [ ] Dificultad creciente: tuberías más rápidas con la puntuación
+- [ ] Guardar `High` en el navegador (`localStorage`)
+- [ ] Pantalla de inicio y botón de pausa
+- [ ] Versión para móvil con control táctil
+- [ ] Publicarlo con GitHub Pages para jugar desde un enlace
 
 ## 📄 Licencia
 
-Recursos del kit bajo **MIT-0** (ver [`LICENCE.md`](./LICENCE.md)).
+Recursos del kit bajo **MIT-0**, de Amazon (ver [`LICENCE.md`](./LICENCE.md)).
